@@ -1,14 +1,14 @@
 # 📋✅ TáNaLista
 
-> **Tá na lista? Então pode entrar.**  
-O **TáNaLista** é uma solução completa de **gestão de acesso e controle de convidados** para eventos de pequeno, médio e grande porte.  
+> **Tá na lista? Então pode entrar.**
+O **TáNaLista** é uma solução completa de **gestão de acesso e controle de convidados** para eventos de pequeno, médio e grande porte.
 Criado para **eliminar filas, fraudes e confusão**, o sistema une **QR Code, biometria e validação em tempo real**, garantindo segurança para o organizador e uma experiência fluida para o convidado.
 
 ---
 
 ## 🎯 Propósito do Projeto
 
-O TáNaLista nasceu com um objetivo simples e poderoso:  
+O TáNaLista nasceu com um objetivo simples e poderoso:
 **garantir que só entra quem realmente foi convidado — sem dor de cabeça.**
 
 Seja um evento pequeno ou uma grande produção, o sistema se adapta, não cai e não deixa ninguém na mão.
@@ -18,7 +18,7 @@ Seja um evento pequeno ou uma grande produção, o sistema se adapta, não cai e
 ## 🎨 Identidade Visual
 
 - **Cor Primária:** Branco `#FFFFFF`
-- **Cor Secundária:** Verde Escuro `#053314`  
+- **Cor Secundária:** Verde Escuro `#053314`
   > Transmite segurança, organização e confiança.
 
 ---
@@ -137,9 +137,9 @@ Se o convidado estiver **sem celular ou sem internet**:
    - **Biometria** no celular do ADM **OU**
    - **Documento físico (RG)** para conferência manual
 
-✔️ Entrada liberada com segurança  
-✔️ Evento continua normalmente  
-✔️ Zero gargalo na portaria  
+✔️ Entrada liberada com segurança
+✔️ Evento continua normalmente
+✔️ Zero gargalo na portaria
 
 ---
 
@@ -169,11 +169,11 @@ Do evento intimista ao evento lotado.
 
 ## 🧠 Filosofia do Produto
 
-> **Tecnologia só é boa quando some.**  
+> **Tecnologia só é boa quando some.**
 O usuário não precisa pensar — apenas usar.
 
-Se tá na lista, entra.  
-Se não tá, o sistema mostra o motivo.  
+Se tá na lista, entra.
+Se não tá, o sistema mostra o motivo.
 Sem discussão, sem estresse.
 
 ---
@@ -200,10 +200,10 @@ Você pode ajudar com:
 - Melhorias de UX/UI
 - Correções e refatorações
 
-1. Faça um fork do projeto  
-2. Crie uma branch (`feature/minha-feature`)  
-3. Commit suas alterações  
-4. Abra um Pull Request 🚀  
+1. Faça um fork do projeto
+2. Crie uma branch (`feature/minha-feature`)
+3. Commit suas alterações
+4. Abra um Pull Request 🚀
 
 ---
 
@@ -219,6 +219,6 @@ Você pode ajudar com:
 
 ## 📋 Tá na lista?
 
-Então pode entrar. ✅  
+Então pode entrar. ✅
 
 -------------------------
