@@ -109,9 +109,6 @@ Seja um evento pequeno ou uma grande produção, o sistema se adapta, não cai e
 └── config # Variáveis de ambiente e configs globais
 
 
-Perfeito 👍 você tem razão — vou **continuar exatamente no mesmo formato Markdown**, sem quebrar bloco nem misturar `plaintext`.
-
-Segue a **continuação correta do README**, a partir de onde você parou:
 
 ---
 
