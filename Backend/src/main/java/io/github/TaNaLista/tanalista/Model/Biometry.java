@@ -29,6 +29,14 @@ public class Biometry {
         this.hash = hash;
     }
 
+    public boolean isFace() {
+        return this.biometryType == BiometryType.FACE;
+    }
+
+    public boolean isDigital() {
+        return this.biometryType == BiometryType.DIGITAL;
+    }
+
     // Getters
     public Long getId() {
         return id;

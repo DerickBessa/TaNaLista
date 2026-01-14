@@ -27,6 +27,10 @@ public class Guest {
     protected Guest() {
     }
 
+    public boolean isPresent() {
+        return this.guestType == GuestType.PRESENT;
+    }
+
     public Guest(GuestType guestType) {
         this.guestType = guestType;
     }

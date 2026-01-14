@@ -49,6 +49,14 @@ public class Event {
     protected Event() {
     }
 
+    public boolean isSmall() {
+        return this.eventType == io.github.TaNaLista.tanalista.Model.ENUM.EventType.SMALL;
+    }
+
+    public boolean isBig() {
+        return this.eventType == io.github.TaNaLista.tanalista.Model.ENUM.EventType.BIG;
+    }
+
     public Event(
             String name,
             String description,

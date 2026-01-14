@@ -5,6 +5,7 @@ import java.util.UUID;
 import io.github.TaNaLista.tanalista.Model.ENUM.InviteStatus;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
 @Table(name = "invites")
@@ -14,13 +15,16 @@ public class Invite {
     // ATRIBUTOS
     // =========================
 
+    @Getter
     @Id
     @GeneratedValue
     private UUID id;
 
+    @Getter
     @Column(nullable = false, unique = true)
     private String inviteCode;
 
+    @Getter
     @Column(nullable = false, unique = true)
     private String qrCode;
 
@@ -45,25 +49,17 @@ public class Invite {
     // GETTERS
     // =========================
 
-    public UUID getId() {
-        return id;
+    public boolean isValid() {
+        return this.inviteStatus == InviteStatus.VALID;
     }
 
-    public String getInviteCode() {
-        return inviteCode;
+    public boolean isUsed() {
+        return this.inviteStatus == InviteStatus.USED;
     }
 
-    public String getQrCode() {
-        return qrCode;
+    public boolean isExpired() {
+        return this.inviteStatus == InviteStatus.EXPIRED;
     }
-
-    public InviteStatus getInviteStatus() {
-        return inviteStatus;
-    }
-
-    // =========================
-    // REGRAS DE NEGÓCIO
-    // =========================
 
     public void validar() {
         // lógica futura
