@@ -14,4 +14,11 @@ public class User {
     private String phone;
     private UserType typeUser;
 
+    public void autenticar() {
+        // regra de negócio de autenticação (ainda não implementada)
+    }
+
+    public void atualizarPerfil(String name, String phone) {
+        // regra de negócio para atualizar dados do usuário
+    }
 }

@@ -8,4 +8,12 @@ public class Invite {
     private String InviteCode;
     private String  qrCode;
     private InviteStatus inviteStatus;
+
+    public void validar() {
+        // lógica será definida depois
+    }
+
+    public void marcarComoUsado() {
+        // lógica será definida depois
+    }
 }
