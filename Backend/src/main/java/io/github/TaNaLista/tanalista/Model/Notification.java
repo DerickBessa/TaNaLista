@@ -12,4 +12,15 @@ public class Notification {
     private NotificationType type_notification;
     private LocalDateTime date;
 
+    public void iniciar() {
+        // comportamento do domínio
+    }
+
+    public void encerrar() {
+        // comportamento do domínio
+    }
+
+    public void enviarMensagem(String mensagem) {
+        // comportamento do domínio
+    }
 }

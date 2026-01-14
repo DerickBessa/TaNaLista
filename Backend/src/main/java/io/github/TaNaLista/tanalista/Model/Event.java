@@ -16,4 +16,20 @@ public class Event {
     private int limitIvitedPersons;
     private boolean guestCanInvite;
     private EventStatus eventStatus;
+
+    public void abrirEvento() {
+        // evento passa para estado aberto
+    }
+
+    public void encerrarEvento() {
+        // evento passa para estado encerrado
+    }
+
+    public void permitirConvites() {
+        // convidados podem convidar outros
+    }
+
+    public void bloquearConvites() {
+        // convidados não podem mais convidar
+    }
 }

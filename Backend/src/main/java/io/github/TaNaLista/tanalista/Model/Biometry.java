@@ -6,4 +6,9 @@ public class Biometry {
 
     private BiometryType biometryType;
     private String hash;
+
+    public boolean validar() {
+        // validação de biometria no domínio
+        return true;
+    }
 }
