@@ -26,6 +26,14 @@ public class Chat {
         this.chatType = chatType;
     }
 
+    public boolean isBot() {
+        return this.chatType == ChatType.BOT;
+    }
+
+    public boolean isManager() {
+        return this.chatType == ChatType.MANAGER;
+    }
+
     // Getters
     public UUID getId() {
         return id;
