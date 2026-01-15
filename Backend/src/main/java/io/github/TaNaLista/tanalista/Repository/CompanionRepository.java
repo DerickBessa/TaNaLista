@@ -9,4 +9,6 @@ import java.util.UUID;
 public interface CompanionRepository extends JpaRepository<Companion, UUID> {
 
     List<Companion> findByCompanionNameContainingIgnoreCase(String companionName);
+
+    List<Companion> findByUserId(UUID userId);
 }

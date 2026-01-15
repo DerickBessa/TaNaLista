@@ -3,6 +3,8 @@ package io.github.TaNaLista.tanalista.Model;
 import io.github.TaNaLista.tanalista.Model.ENUM.UserType;
 
 import jakarta.persistence.*;
+
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -28,6 +30,9 @@ public class User {
 
     @Column(nullable = false)
     private String phone;
+
+    @Transient
+    private List<Companion> companions;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
