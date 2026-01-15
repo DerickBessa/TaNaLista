@@ -1,6 +1,8 @@
 package io.github.TaNaLista.tanalista.Model;
 
 import jakarta.persistence.*;
+import lombok.Setter;
+
 import java.util.UUID;
 
 @Entity
@@ -11,9 +13,11 @@ public class Companion {
     @GeneratedValue
     private UUID id;
 
+    @Setter
     @Column(nullable = false)
     private String companionName;
 
+    @Setter
     @Column(name = "user_id", nullable = false)
     private UUID userId;
 
