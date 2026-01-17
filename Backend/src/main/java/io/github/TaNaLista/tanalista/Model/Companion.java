@@ -13,11 +13,9 @@ public class Companion {
     @GeneratedValue
     private UUID id;
 
-    @Setter
     @Column(nullable = false)
     private String companionName;
 
-    @Setter
     @Column(name = "user_id", nullable = false)
     private UUID userId;
 
@@ -46,4 +44,12 @@ public class Companion {
     }
 
 
+    // Setters
+    public void setCompanionName(String companionName) {
+        this.companionName = companionName;
+    }
+
+    public void setUserId(UUID userId) {
+        this.userId = userId;
+    }
 }

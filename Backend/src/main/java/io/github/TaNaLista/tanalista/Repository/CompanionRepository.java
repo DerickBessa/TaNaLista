@@ -12,8 +12,5 @@ public interface CompanionRepository extends JpaRepository<Companion, UUID> {
 
     List<Companion> findByUserId(UUID userId);
 
-    List<Companion> findAll();
-
-
     boolean existsByUserIdAndCompanionNameIgnoreCase(UUID userId, String name);
 }
