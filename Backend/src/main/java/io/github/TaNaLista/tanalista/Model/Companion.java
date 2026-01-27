@@ -1,7 +1,6 @@
 package io.github.TaNaLista.tanalista.Model;
 
 import jakarta.persistence.*;
-import lombok.Setter;
 
 import java.util.UUID;
 
