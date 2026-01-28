@@ -1,3 +1,4 @@
+// java
 package io.github.TaNaLista.tanalista.Controller;
 
 import io.github.TaNaLista.tanalista.DTO.CompanionDTO;
@@ -12,20 +13,19 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.annotation.RequestScope;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 
 import static org.springframework.http.ResponseEntity.*;
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequestUri;
 
-@Slf4j
 @RequestScope
 @RestController
 @RequestMapping(value = "companions")
@@ -40,6 +40,8 @@ import static org.springframework.web.servlet.support.ServletUriComponentsBuilde
 })
 public class CompanionController {
 
+    private static final Logger log = LoggerFactory.getLogger(CompanionController.class);
+
     private final CompanionService companionService;
 
     public CompanionController(CompanionService companionService) {
@@ -53,9 +55,11 @@ public class CompanionController {
             @RequestParam UUID userId,
             @RequestParam String name) {
 
-        companionService.validateCompanionName(userId, name);
         Companion companion = companionService.create(userId, name);
-        return created(fromCurrentRequestUri().path(companion.getId().toString()).build().toUri())
+        return created(fromCurrentRequestUri()
+                .path("/{id}")
+                .buildAndExpand(companion.getId())
+                .toUri())
                 .body(new CompanionDTO(companion));
     }
 
@@ -65,9 +69,6 @@ public class CompanionController {
     @ApiResponse(responseCode = "200", description = "Request Ok")
     public ResponseEntity<CompanionDTO> getOne(@PathVariable(value = "id") UUID id) {
         Companion companion = companionService.findById(id);
-        if (companion == null) {
-            return notFound().build();
-        }
         return ok().body(new CompanionDTO(companion));
     }
 
@@ -108,23 +109,18 @@ public class CompanionController {
     @Operation(summary = "Update Companion", description = "Updates the Companion by its attributes")
     @PutMapping("{id}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public ResponseEntity updateCompanion(
+    public ResponseEntity<Void> updateCompanion(
             @PathVariable(value = "id") UUID id,
             @RequestParam String name) {
 
-        UUID userId = companionService.getUserId(id);
-        companionService.validateCompanionName(userId, name);
-
-        Companion companion = new Companion(name, userId);
-        companionService.saveOrUpdate(id, companion);
-
+        companionService.update(id, name);
         return noContent().build();
     }
 
     @Operation(summary = "Delete Companion", description = "Delete Companion by id (UUID)")
     @DeleteMapping("{id}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public ResponseEntity delete(@PathVariable("id") UUID id) {
+    public ResponseEntity<Void> delete(@PathVariable("id") UUID id) {
         companionService.deleteCompanion(id);
         return noContent().build();
     }
@@ -132,7 +128,7 @@ public class CompanionController {
     @Operation(summary = "Delete all Companions", description = "Delete all Companions by ids (UUID)")
     @PostMapping("/delete-by-ids")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public ResponseEntity deleteAll(@RequestBody List<UUID> listId) {
+    public ResponseEntity<Void> deleteAll(@RequestBody List<UUID> listId) {
         listId.forEach(companionService::deleteCompanion);
         return noContent().build();
     }
