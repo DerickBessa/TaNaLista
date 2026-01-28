@@ -47,7 +47,7 @@ public class User {
     }
 
     // Construtor de domínio
-    public User(String name, String cpf, String email, String phone, UserType typeUser) {
+    public User(String name, String cpf, String email, String phone, UserType userType) {
         this.name = name;
         this.cpf = cpf;
         this.email = email;
@@ -81,6 +81,26 @@ public class User {
 
     public UserType getTypeUser() {
         return userType;
+    }
+
+    // =========================
+    // SETTERS (para atualizações via service)
+    // =========================
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setUserType(UserType userType) {
+        this.userType = userType;
     }
 
     // =========================
