@@ -58,4 +58,24 @@ public class Local {
     public String getLinkGoogleMaps() {
         return linkGoogleMaps;
     }
+
+    // =========================
+    // SETTERS (adicionados)
+    // =========================
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public void setLinkGoogleMaps(String linkGoogleMaps) {
+        this.linkGoogleMaps = linkGoogleMaps;
+    }
 }
