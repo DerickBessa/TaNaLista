@@ -9,11 +9,13 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { useTheme } from "../contexts/ThemeContext";
 
 export default function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+  const { colors } = useTheme();
 
   const handleLogin = () => {
     // Implementar a lógica de autenticação
@@ -28,16 +30,26 @@ export default function LoginScreen() {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.container}
+      style={[styles.container, { backgroundColor: colors.background }]}
     >
       <View style={styles.content}>
-        <Text style={styles.title}>TaNaLista</Text>
-        <Text style={styles.subtitle}>Faça login para continuar</Text>
+        <Text style={[styles.title, { color: colors.primary }]}>TaNaLista</Text>
+        <Text style={[styles.subtitle, { color: colors.textSecondary }]}>
+          Faça login para continuar
+        </Text>
 
         <View style={styles.form}>
           <TextInput
-            style={styles.input}
+            style={[
+              styles.input,
+              {
+                backgroundColor: colors.card,
+                borderColor: colors.border,
+                color: colors.text,
+              },
+            ]}
             placeholder="E-mail"
+            placeholderTextColor={colors.textSecondary}
             value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
@@ -46,15 +58,26 @@ export default function LoginScreen() {
           />
 
           <TextInput
-            style={styles.input}
+            style={[
+              styles.input,
+              {
+                backgroundColor: colors.card,
+                borderColor: colors.border,
+                color: colors.text,
+              },
+            ]}
             placeholder="Senha"
+            placeholderTextColor={colors.textSecondary}
             value={password}
             onChangeText={setPassword}
             secureTextEntry
             autoComplete="password"
           />
 
-          <TouchableOpacity style={styles.button} onPress={handleLogin}>
+          <TouchableOpacity
+            style={[styles.button, { backgroundColor: colors.primary }]}
+            onPress={handleLogin}
+          >
             <Text style={styles.buttonText}>Entrar</Text>
           </TouchableOpacity>
 
@@ -62,7 +85,9 @@ export default function LoginScreen() {
             style={styles.linkButton}
             onPress={() => router.push("/register")}
           >
-            <Text style={styles.linkText}>Não tem conta? Cadastre-se</Text>
+            <Text style={[styles.linkText, { color: colors.primary }]}>
+              Não tem conta? Cadastre-se
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -73,7 +98,6 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
   },
   content: {
     flex: 1,
@@ -85,12 +109,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     marginBottom: 8,
-    color: "#05331E",
   },
   subtitle: {
     fontSize: 16,
     textAlign: "center",
-    color: "#666",
     marginBottom: 40,
   },
   form: {
@@ -99,15 +121,12 @@ const styles = StyleSheet.create({
   input: {
     height: 50,
     borderWidth: 1,
-    borderColor: "#ddd",
     borderRadius: 8,
     paddingHorizontal: 16,
     fontSize: 16,
-    backgroundColor: "#f9f9f9",
   },
   button: {
     height: 50,
-    backgroundColor: "#05331E",
     borderRadius: 8,
     justifyContent: "center",
     alignItems: "center",
@@ -123,7 +142,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   linkText: {
-    color: "#05331E",
     fontSize: 14,
   },
 });

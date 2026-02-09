@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { useTheme } from "../contexts/ThemeContext";
 
 export default function RegisterScreen() {
   const [name, setName] = useState("");
@@ -19,6 +20,7 @@ export default function RegisterScreen() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const router = useRouter();
+  const { colors } = useTheme();
 
   const handleRegister = () => {
     // Validação básica
@@ -48,22 +50,32 @@ export default function RegisterScreen() {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.container}
+      style={[styles.container, { backgroundColor: colors.background }]}
     >
       <ScrollView
         contentContainerStyle={styles.scrollContent}
         keyboardShouldPersistTaps="handled"
       >
         <View style={styles.content}>
-          <Text style={styles.title}>Criar Conta</Text>
-          <Text style={styles.subtitle}>
+          <Text style={[styles.title, { color: colors.primary }]}>
+            Criar Conta
+          </Text>
+          <Text style={[styles.subtitle, { color: colors.textSecondary }]}>
             Preencha os dados para se cadastrar
           </Text>
 
           <View style={styles.form}>
             <TextInput
-              style={styles.input}
+              style={[
+                styles.input,
+                {
+                  backgroundColor: colors.card,
+                  borderColor: colors.border,
+                  color: colors.text,
+                },
+              ]}
               placeholder="Nome completo"
+              placeholderTextColor={colors.textSecondary}
               value={name}
               onChangeText={setName}
               autoCapitalize="words"
@@ -71,8 +83,16 @@ export default function RegisterScreen() {
             />
 
             <TextInput
-              style={styles.input}
+              style={[
+                styles.input,
+                {
+                  backgroundColor: colors.card,
+                  borderColor: colors.border,
+                  color: colors.text,
+                },
+              ]}
               placeholder="E-mail"
+              placeholderTextColor={colors.textSecondary}
               value={email}
               onChangeText={setEmail}
               keyboardType="email-address"
@@ -81,8 +101,16 @@ export default function RegisterScreen() {
             />
 
             <TextInput
-              style={styles.input}
+              style={[
+                styles.input,
+                {
+                  backgroundColor: colors.card,
+                  borderColor: colors.border,
+                  color: colors.text,
+                },
+              ]}
               placeholder="CPF"
+              placeholderTextColor={colors.textSecondary}
               value={cpf}
               onChangeText={setCpf}
               keyboardType="numeric"
@@ -90,8 +118,16 @@ export default function RegisterScreen() {
             />
 
             <TextInput
-              style={styles.input}
+              style={[
+                styles.input,
+                {
+                  backgroundColor: colors.card,
+                  borderColor: colors.border,
+                  color: colors.text,
+                },
+              ]}
               placeholder="Telefone"
+              placeholderTextColor={colors.textSecondary}
               value={phone}
               onChangeText={setPhone}
               keyboardType="phone-pad"
@@ -99,8 +135,16 @@ export default function RegisterScreen() {
             />
 
             <TextInput
-              style={styles.input}
+              style={[
+                styles.input,
+                {
+                  backgroundColor: colors.card,
+                  borderColor: colors.border,
+                  color: colors.text,
+                },
+              ]}
               placeholder="Senha"
+              placeholderTextColor={colors.textSecondary}
               value={password}
               onChangeText={setPassword}
               secureTextEntry
@@ -108,15 +152,26 @@ export default function RegisterScreen() {
             />
 
             <TextInput
-              style={styles.input}
+              style={[
+                styles.input,
+                {
+                  backgroundColor: colors.card,
+                  borderColor: colors.border,
+                  color: colors.text,
+                },
+              ]}
               placeholder="Confirmar senha"
+              placeholderTextColor={colors.textSecondary}
               value={confirmPassword}
               onChangeText={setConfirmPassword}
               secureTextEntry
               autoComplete="password"
             />
 
-            <TouchableOpacity style={styles.button} onPress={handleRegister}>
+            <TouchableOpacity
+              style={[styles.button, { backgroundColor: colors.primary }]}
+              onPress={handleRegister}
+            >
               <Text style={styles.buttonText}>Cadastrar</Text>
             </TouchableOpacity>
 
@@ -124,7 +179,9 @@ export default function RegisterScreen() {
               style={styles.linkButton}
               onPress={() => router.back()}
             >
-              <Text style={styles.linkText}>Já tem conta? Faça login</Text>
+              <Text style={[styles.linkText, { color: colors.primary }]}>
+                Já tem conta? Faça login
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -136,7 +193,6 @@ export default function RegisterScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
   },
   scrollContent: {
     flexGrow: 1,
@@ -152,12 +208,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     marginBottom: 8,
-    color: "#05331E",
   },
   subtitle: {
     fontSize: 16,
     textAlign: "center",
-    color: "#666",
     marginBottom: 40,
   },
   form: {
@@ -166,15 +220,12 @@ const styles = StyleSheet.create({
   input: {
     height: 50,
     borderWidth: 1,
-    borderColor: "#ddd",
     borderRadius: 8,
     paddingHorizontal: 16,
     fontSize: 16,
-    backgroundColor: "#f9f9f9",
   },
   button: {
     height: 50,
-    backgroundColor: "#05331E",
     borderRadius: 8,
     justifyContent: "center",
     alignItems: "center",
@@ -190,7 +241,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   linkText: {
-    color: "#05331E",
     fontSize: 14,
   },
 });
