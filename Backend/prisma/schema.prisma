@@ -1,0 +1,116 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//user
+
+
+model User {
+	id String  @id @default(uuid())
+	name String
+	email String @unique
+	phone String?
+	cpf String @unique
+	picture String? 
+	password String
+	login String @unique
+	ownEvents Event[] @relation("EventOwner")
+	guest Guest[]
+	adminEvents Event[] @relation("EventAdmins")
+
+	createdAt DateTime @default(now())
+}	
+
+model Event {
+	id		String @id @default(uuid())
+	title   String 
+	description String?
+	date DateTime
+	local String?
+	bool_company Boolean  @default(false)
+	company_per_guest Int @default(1)
+	total_guests Int?
+	guestLimit Boolean @default(true)
+	status EventStatus @default(UNSTARTED)
+	type_event EventType
+	guests EventGuest[]
+
+	createdAt DateTime @default(now())
+
+	ownerId String
+	owner   User  @relation("EventOwner" ,fields: [ownerId], references: [id]) 
+	admins User[] @relation("EventAdmins")
+
+	
+}
+
+model Guest{
+
+	id String @id @default(uuid())
+	userId String
+	user User @relation(fields: [userId], references: [id])
+	company Company[]
+	event EventGuest[]
+
+
+	createdAt DateTime @default(now())
+}
+
+model Company{
+
+	id String @id @default(uuid())
+	name String
+	picture String
+	cpf String 
+	email String?
+	guestId String
+	guestCompanion Guest @relation(fields: [guestId], references: [id])
+	
+	createdAt DateTime @default(now())
+}
+
+model EventGuest {
+
+	id String @id @default(uuid())
+	eventId String
+	guestId String
+
+	confirmed Boolean @default(false)
+	role Role @default(GUEST)
+	invitedAt DateTime @default(now())
+
+	event Event @relation(fields: [eventId], references: [id])
+	guest Guest @relation(fields: [guestId], references: [id])
+
+	@@unique([eventId, guestId])
+}
+
+enum EventType{
+	WEDDING
+	BIRTHDAY
+	CORPORATE
+	PARTY
+	OTHER
+}
+
+enum EventStatus{
+	ENDED
+	STARTED
+	UNSTARTED
+}
+
+enum Role {
+	GUEST
+	PROFESSIONAL
+}
